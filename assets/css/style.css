@@ -13,6 +13,17 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #272829;
 }
+body {
+  color: #333;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  color: #ddd;
+  background-color: #222;
+}
+
 
 a {
   color: #149ddd;
