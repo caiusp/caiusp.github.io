@@ -1,33 +1,38 @@
 :root {
-  --bg: #f0f0f0;
-  --win-bg: #ffffff;
-  --win-border: #222;
-  --text: #333;
-  --muted: #666;
-  --accent: #005a9e; /* Blu professionale */
-  --win-bar: #e0e0e0;
+  --bg: #f2f2f2;           /* Grigio chiarissimo di sfondo */
+  --win-bg: #ffffff;       /* Bianco per l'interno finestre */
+  --win-border: #000000;   /* Nero puro per i bordi */
+  --text: #1a1a1a;         /* Quasi nero per il testo */
+  --muted: #666666;       /* Grigio per i testi secondari */
+  --accent: #005a9e;       /* Blu per i link */
+  --win-bar: #e1e1e1;      /* Grigio barra del titolo */
+  
+  /* Colori pulsanti finestra tipo macOS/Unix */
+  --btn-close: #ff5f56;
+  --btn-max: #27c93f;
+  --btn-min: #ffbd2e;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
 }
 
 .layout {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 850px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
 }
 
-/* Navbar */
+/* Topbar scura come l'originale */
 .topbar {
   background: var(--win-border);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,101 +41,118 @@ body {
   z-index: 100;
 }
 
+.brand__name { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
 .nav a {
-  color: white;
+  color: #ccc;
   text-decoration: none;
-  margin-left: 1rem;
-  font-size: 0.9rem;
+  margin-left: 1.5rem;
+  font-size: 0.85rem;
+  transition: color 0.2s;
 }
 
-/* Window Style */
+.nav a:hover { color: white; }
+
+/* Window Design */
 .window {
   background: var(--win-bg);
-  border: 2px solid var(--win-border);
-  box-shadow: 4px 4px 0px var(--win-border);
-  margin-bottom: 2rem;
+  border: 1px solid var(--win-border);
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.05); /* Ombra leggera e netta */
+  margin-bottom: 2.5rem;
 }
 
 .window__titlebar {
   background: var(--win-bar);
-  border-bottom: 2px solid var(--win-border);
-  padding: 0.5rem;
+  border-bottom: 1px solid var(--win-border);
+  padding: 0.4rem 0.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
-  font-size: 0.8rem;
-  text-transform: uppercase;
 }
 
-.window__controls {
-  display: flex;
-  gap: 5px;
+.window__title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
+/* Pulsanti colorati stile pdgeorge */
+.window__controls { display: flex; gap: 6px; }
 
 .winbtn {
-  width: 12px;
-  height: 12px;
-  border: 1.5px solid var(--win-border);
-  background: #ccc;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
-.window__body {
-  padding: 1.5rem;
-}
+.winbtn--close { background: var(--btn-close); }
+.winbtn--max { background: var(--btn-max); }
+.winbtn--min { background: var(--btn-min); }
 
-/* Grid */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
+.window__body { padding: 2rem; }
 
-@media (max-width: 600px) {
-  .grid-2 { grid-template-columns: 1fr; }
-}
+/* Typography */
+.h1 { margin: 0 0 0.5rem 0; font-size: 2rem; font-weight: 800; }
+.lede { font-size: 1.15rem; color: var(--text); margin-bottom: 2rem; }
 
-/* Elements */
-.h1 { margin: 0 0 1rem 0; font-size: 2.2rem; }
-.lede { font-size: 1.1rem; margin-bottom: 1.5rem; }
-.muted { color: var(--muted); font-size: 0.9rem; }
-.small { font-size: 0.85rem; margin-bottom: 1rem; }
+/* Buttons come pdgeorge */
+.cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
 
 .btn {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1rem;
   background: var(--win-border);
   color: white;
   text-decoration: none;
-  border: none;
-  font-weight: bold;
-  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--win-border);
+  transition: opacity 0.2s;
 }
 
 .btn--secondary {
   background: transparent;
   color: var(--win-border);
-  border: 2px solid var(--win-border);
 }
 
+.btn:hover { opacity: 0.8; }
+
+/* Metadata Section */
 .meta {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
 }
 
-.meta dt { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; }
-.meta dd { margin: 0; font-weight: bold; }
+.meta dt { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+.meta dd { margin: 0; font-size: 0.95rem; font-weight: 500; }
 
+/* Lists & Links */
 .list { list-style: none; padding: 0; }
-.list li { margin-bottom: 0.5rem; }
+.list li { margin-bottom: 1rem; }
+.muted { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
 
-.link { color: var(--accent); font-weight: bold; }
+.link {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
 
-.contact-grid {
-  display: flex;
-  gap: 3rem;
-  margin: 1.5rem 0;
+.link:hover { color: var(--accent); }
+
+/* Grid per About e Passioni */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .layout { margin: 2rem auto; }
 }
